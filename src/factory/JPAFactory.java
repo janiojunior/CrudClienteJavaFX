@@ -12,7 +12,7 @@ public class JPAFactory {
 	
 	private static EntityManagerFactory emf = 	Persistence.createEntityManagerFactory("CrudClienteJavaFX");
 	
-	public static EntityManager geEntityManager() {
+	public static EntityManager getEntityManager() {
 		return emf.createEntityManager();
 	}
 }

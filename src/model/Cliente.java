@@ -1,43 +1,40 @@
 package model;
 
-import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Cliente implements Serializable{
+public class Cliente extends DefaultEntity<Cliente> {
 
 	private static final long serialVersionUID = 6762636530489302919L;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
 	private String cpf;
 	private String nome;
 	private String endereco;
 	private String email;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Telefone> listaTelefone;
+	
+	@Column(columnDefinition="Date")
+	private LocalDate dataAniversaio;
+	
 	public Cliente() {
 		
 	}
 
-	public Cliente(String cpf, String nome, String endereco, String email) {
+	public Cliente(String cpf, String nome, String endereco, String email, LocalDate dataAniversario) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.email = email;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+		this.dataAniversaio = dataAniversario;
 	}
 
 	public String getCpf() {
@@ -70,5 +67,13 @@ public class Cliente implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public LocalDate getDataAniversaio() {
+		return dataAniversaio;
+	}
+
+	public void setDataAniversaio(LocalDate dataAniversaio) {
+		this.dataAniversaio = dataAniversaio;
 	}
 }

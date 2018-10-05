@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,13 +25,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.Cliente;
+import repository.ClienteRepository;
 
-public class ClienteController implements Initializable {
+public class ClienteController extends Controller implements Initializable {
 
 	private Cliente cliente;
 
 	@FXML
 	private TextField tfCpf, tfNome, tfEndereco, tfEmail;
+
+    @FXML
+    private DatePicker dpAniversario;
 
 	@FXML
 	private Button btLimpar, btIncluir;
@@ -80,24 +85,17 @@ public class ClienteController implements Initializable {
 
 	@FXML
 	void handlePesquisar(ActionEvent event) {
-		System.out.println("pesquisar");
-
-		EntityManager em = JPAFactory.geEntityManager();
-//		List<Cliente> lista = em.createQuery("SELECT c FROM Cliente c").getResultList();
+		ClienteRepository repository = 
+				new ClienteRepository(JPAFactory.getEntityManager());
+		List<Cliente> lista = repository.getClientes(tfPesquisar.getText());
 		
-		Query query = em.createQuery("SELECT c FROM Cliente c WHERE lower(c.nome) like lower(:nome) ");
-		query.setParameter("nome", "%" + tfPesquisar.getText() + "%");
-		List<Cliente> lista = query.getResultList();
-		
-		if (lista == null || lista.isEmpty()) {
+		if (lista.isEmpty()) {
 			Alert alerta = new Alert(AlertType.INFORMATION);
 			alerta.setTitle("Informação");
 			alerta.setHeaderText(null);
 			alerta.setContentText("A consulta não retornou dados.");
 			alerta.show();
-			lista = new ArrayList<Cliente>();
 		}
-
 		tvClientes.setItems(FXCollections.observableList(lista));
 	}
 
@@ -112,6 +110,7 @@ public class ClienteController implements Initializable {
 				tfNome.setText(cliente.getNome());
 				tfEndereco.setText(cliente.getEndereco());
 				tfEmail.setText(cliente.getEmail());
+				dpAniversario.setValue(cliente.getDataAniversaio());
 
 				// selecionando a primeira aba
 				tpAbas.getSelectionModel().select(0);
@@ -126,15 +125,14 @@ public class ClienteController implements Initializable {
 
 	@FXML
 	void hadleIncluir(ActionEvent event) {
-		cliente = new Cliente(tfCpf.getText(), tfNome.getText(), tfEndereco.getText(), tfEmail.getText());
+		cliente = new Cliente(tfCpf.getText(), 
+							  tfNome.getText(), 
+							  tfEndereco.getText(), 
+							  tfEmail.getText(),
+							  dpAniversario.getValue());
 
-		EntityManager em = JPAFactory.geEntityManager();
-
-		// iniciando a transacao
-		em.getTransaction().begin();
-		em.persist(cliente);
-		em.getTransaction().commit();
-		em.close();
+		super.save(cliente);
+		
 		handleLimpar(event);
 	}
 
@@ -144,27 +142,16 @@ public class ClienteController implements Initializable {
 		cliente.setNome(tfNome.getText());
 		cliente.setEndereco(tfEndereco.getText());
 		cliente.setEmail(tfEmail.getText());
+		cliente.setDataAniversaio(dpAniversario.getValue());
 
-		EntityManager em = JPAFactory.geEntityManager();
-
-		// iniciando a transacao
-		em.getTransaction().begin();
-		em.merge(cliente);
-		em.getTransaction().commit();
-		em.close();
+		save(cliente);
+		
 		handleLimpar(event);
 	}
 
 	@FXML
 	void handleExcluir(ActionEvent event) {
-		EntityManager em = JPAFactory.geEntityManager();
-
-		// iniciando a transacao
-		em.getTransaction().begin();
-		cliente = em.merge(cliente);
-		em.remove(cliente);
-		em.getTransaction().commit();
-		em.close();
+		super.remove(cliente);
 		handleLimpar(event);
 	}
 
@@ -174,6 +161,7 @@ public class ClienteController implements Initializable {
 		tfNome.setText("");
 		tfEndereco.setText("");
 		tfEmail.setText("");
+		dpAniversario.setValue(null);
 		// limpando as informacoes do cliente
 		cliente = new Cliente();
 		// setando o focus no cpf
