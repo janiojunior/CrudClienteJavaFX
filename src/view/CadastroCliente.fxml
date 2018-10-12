@@ -8,8 +8,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -36,16 +34,16 @@
                         <Label layoutX="47.0" layoutY="186.0" text="Aniversário:" />
                         <DatePicker fx:id="dpAniversario" layoutX="127.0" layoutY="181.0" />
                         <Label layoutX="84.0" layoutY="229.0" text="DDD:" />
-                        <TextField layoutX="127.0" layoutY="224.0" prefHeight="27.0" prefWidth="66.0" />
-                        <TextField layoutX="280.0" layoutY="224.0" />
+                        <TextField fx:id="tfCodigoArea" layoutX="127.0" layoutY="224.0" prefHeight="27.0" prefWidth="66.0" />
+                        <TextField fx:id="tfNumero" layoutX="280.0" layoutY="224.0" />
                         <Label layoutX="217.0" layoutY="229.0" text="Número" />
-                        <Button layoutX="460.0" layoutY="224.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="104.0" text="Adicionar" />
-                        <TreeTableView layoutX="70.0" layoutY="263.0" prefHeight="145.0" prefWidth="615.0">
+                        <Button layoutX="460.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleAdicionarTelefone" prefHeight="27.0" prefWidth="104.0" text="Adicionar" />
+                        <TableView fx:id="tbTelefone" layoutX="128.0" layoutY="265.0" prefHeight="151.0" prefWidth="437.0">
                           <columns>
-                            <TreeTableColumn prefWidth="75.0" text="C1" />
-                            <TreeTableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="tcCodigoArea" prefWidth="75.0" text="DDD" />
+                            <TableColumn fx:id="tcNumero" prefWidth="361.0" text="Número" />
                           </columns>
-                        </TreeTableView>
+                        </TableView>
                      </children>
                   </AnchorPane>
             </content>
