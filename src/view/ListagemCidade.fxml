@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="listcontroller.CidadeListController">
    <top>
       <AnchorPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,12 +24,12 @@
    <center>
       <AnchorPane prefHeight="320.0" prefWidth="506.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tvListagem" layoutX="37.0" layoutY="76.0" prefHeight="404.0" prefWidth="500.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0">
+            <TableView fx:id="tvListagem" layoutX="37.0" layoutY="76.0" onMouseClicked="#handleMouseClicked" prefHeight="404.0" prefWidth="500.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0">
                <columns>
                   <TableColumn fx:id="tcId" prefWidth="40.0" text="Id" />
                   <TableColumn fx:id="tcNome" prefWidth="211.0" text="Nome" />
                   <TableColumn fx:id="tcEstado" minWidth="0.0" prefWidth="133.0" text="Estado" />
-                  <TableColumn fx:id="tcPaís" prefWidth="116.0" text="País" />
+                  <TableColumn fx:id="tcPais" prefWidth="116.0" text="País" />
                </columns>
             </TableView>
             <Label fx:id="lbNome" alignment="CENTER_RIGHT" layoutX="53.0" layoutY="35.0" prefHeight="25.0" prefWidth="80.0" text="Nome:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
