@@ -13,7 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.Cliente;
+import model.Sexo;
 import model.Telefone;
 import repository.ClienteRepository;
 
@@ -83,6 +86,9 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 
 	@FXML
 	private TabPane tpAbas;
+	
+    @FXML
+    private ComboBox<Sexo> cbSexo;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -100,6 +106,34 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 		tcCodigoArea.setCellValueFactory(new PropertyValueFactory<>("codigoArea"));
 		tcNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
 
+		// adicionando o conteudo do combobox
+		cbSexo.getItems().addAll(Sexo.values());
+		// sobreescrevendo o método que mostra o conteudo do combobox
+		cbSexo.setCellFactory(c -> new ListCell<Sexo>() {
+			@Override
+			protected void updateItem(Sexo item, boolean empty) {
+				super.updateItem(item, empty);
+				
+				if (item == null || empty)
+					setText(null);
+				else
+					setText(item.getLabel());
+			}
+		});
+		// seobrescreendo o método que mostra o conteudo selecionado
+		cbSexo.setButtonCell(new ListCell<Sexo>() {
+			@Override
+			protected void updateItem(Sexo item, boolean empty) {
+				super.updateItem(item, empty);
+				
+				if (item == null || empty)
+					setText(null);
+				else
+					setText(item.getLabel());
+			}
+		});
+		
+		
 		// atualizando os botoes
 		atualizarBotoes();
 		
@@ -156,6 +190,7 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 				tfEndereco.setText(getCliente().getEndereco());
 				tfEmail.setText(getCliente().getEmail());
 				dpAniversario.setValue(getCliente().getDataAniversaio());
+				cbSexo.setValue(getCliente().getSexo());
 				
 				// preenchendo os telefone
 				tbTelefone.setItems(FXCollections.observableList(getCliente().getListaTelefone()));
@@ -178,6 +213,7 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 		getCliente().setEndereco(tfEndereco.getText());
 		getCliente().setEmail(tfEmail.getText());
 		getCliente().setDataAniversaio(dpAniversario.getValue());
+		getCliente().setSexo(cbSexo.getValue());
 
 		super.save(getCliente());
 		
@@ -191,6 +227,7 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 		getCliente().setEndereco(tfEndereco.getText());
 		getCliente().setEmail(tfEmail.getText());
 		getCliente().setDataAniversaio(dpAniversario.getValue());
+		getCliente().setSexo(cbSexo.getValue());
 
 		save(getCliente());
 		
@@ -218,6 +255,10 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 		//limpando as tables
 		tvClientes.getItems().clear();
 		tbTelefone.getItems().clear();
+		
+		//limbando o combobox
+//		cbSexo.getSelectionModel().clearSelection();
+		cbSexo.setValue(null);
 
 		atualizarBotoes();
 	}

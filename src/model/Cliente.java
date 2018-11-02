@@ -14,23 +14,25 @@ import javax.persistence.OneToMany;
 public class Cliente extends DefaultEntity<Cliente> {
 
 	private static final long serialVersionUID = 6762636530489302919L;
-	
+
 	private String cpf;
 	private String nome;
 	private String endereco;
 	private String email;
 	@ManyToOne
-	@JoinColumn(name="idCidadeNatal")
+	@JoinColumn(name = "idCidadeNatal")
 	private Cidade cidadeNatal;
-	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="cliente")
+
+	private Sexo sexo;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
 	private List<Telefone> listaTelefone;
-	
-	@Column(columnDefinition="Date")
+
+	@Column(columnDefinition = "Date")
 	private LocalDate dataAniversaio;
-	
+
 	public Cliente() {
-		
+
 	}
 
 	public Cliente(String cpf, String nome, String endereco, String email, LocalDate dataAniversario) {
@@ -97,5 +99,13 @@ public class Cliente extends DefaultEntity<Cliente> {
 	public void setCidadeNatal(Cidade cidadeNatal) {
 		this.cidadeNatal = cidadeNatal;
 	}
-	
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
 }
