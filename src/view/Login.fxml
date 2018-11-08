@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="600.0" style="-fx-background-color: purple;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <AnchorPane layoutX="25.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="550.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <ImageView fitHeight="187.0" fitWidth="225.0" layoutX="22.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/resources/halloween.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="274.0" layoutY="26.0" text="Unitins" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="62.0" text="Universidade Estadual do Tocantins" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="265.0" layoutY="85.0" minWidth="200.0" prefHeight="36.0" prefWidth="287.0" text="Sistema Halloween" textFill="WHITE" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="8.0">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="tfUsuario" layoutX="20.0" layoutY="217.0" prefHeight="27.0" prefWidth="265.0" />
+      <Label layoutX="20.0" layoutY="193.0" text="Usuário" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="315.0" layoutY="193.0" text="Senha" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="315.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleEntrar" prefWidth="120.0" style="-fx-background-color: #ffbf00#ffbf00 #ffbf00;" text="Entrar" />
+      <Button layoutX="460.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleCancelar" prefWidth="120.0" style="-fx-background-color: #ffbf00#ffbf00 #ffbf00;" text="Cancelar" />
+      <PasswordField fx:id="tfSenha" layoutX="315.0" layoutY="217.0" prefHeight="27.0" prefWidth="265.0" />
+   </children>
+</AnchorPane>
