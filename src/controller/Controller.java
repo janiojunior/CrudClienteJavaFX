@@ -2,9 +2,12 @@ package controller;
 
 import factory.JPAFactory;
 import model.DefaultEntity;
+import model.Usuario;
 import repository.Repository;
 
 public class Controller<T extends DefaultEntity<? super T>> {
+	
+	private static Usuario usuario = null;
 	
 	public T save(T entity) {
 		Repository<T> repository = 
@@ -28,4 +31,13 @@ public class Controller<T extends DefaultEntity<? super T>> {
 		repository.getEntityManager().getTransaction().commit();
 		repository.getEntityManager().close();
 	}
+
+	public static Usuario getUsuarioLogado() {
+		return usuario;
+	}
+
+	public static void setUsuarioLogado(Usuario usuario) {
+		Controller.usuario = usuario;
+	}
+	
 }

@@ -11,8 +11,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.Perfil;
 
 public class TemplateController implements Initializable {
 	public static Parent clienteView;
@@ -20,9 +27,21 @@ public class TemplateController implements Initializable {
 	
     @FXML
     private ScrollPane scrollPane;
+    
+    @FXML
+    private Label labelUsuario;
+
+    @FXML
+    private Button buttonCadastroCliente;
+
+    @FXML
+    private Button buttonCadastroCidade;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// abrindo a tela de login
+		abrirTelaLogin();
+		
 		scrollPane.setFitToHeight(true);
 		scrollPane.setFitToWidth(true);
 		try {
@@ -31,6 +50,32 @@ public class TemplateController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void abrirTelaLogin() {
+		try {
+	    	Stage stage = new Stage(StageStyle.TRANSPARENT);
+	    	Parent parent = FXMLLoader.load(Main.class.getResource("/view/Login.fxml"));
+	    	Scene scene = new Scene(parent, 600, 318);
+	    	stage.setTitle("Login");
+	    	stage.setScene(scene);
+	    	stage.initModality(Modality.APPLICATION_MODAL);
+	    	stage.showAndWait();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		// atualizando a interface com o usuario logado
+		labelUsuario.setText(Controller.getUsuarioLogado().getNome());
+		
+		// bloqueando botoes de conforme o perfil
+		if (Controller.getUsuarioLogado().getPerfil().equals(Perfil.ADMINISTRADOR)) {
+			buttonCadastroCidade.setDisable(false);
+			buttonCadastroCliente.setDisable(false);
+		} else if (Controller.getUsuarioLogado().getPerfil().equals(Perfil.CADASTRO)) {
+			buttonCadastroCidade.setDisable(true); // desabilitando o cadastro de cidade
+			buttonCadastroCliente.setDisable(false);
+		}
+		
 	}
 
 	@FXML
@@ -48,4 +93,10 @@ public class TemplateController implements Initializable {
 		vbox.getChildren().add(clienteView);
 		scrollPane.setContent(vbox);
 	}
+	
+    @FXML
+    void handleBloquear(ActionEvent event) {
+    	abrirTelaLogin();
+    }
+
 }
