@@ -19,8 +19,8 @@
       </Label>
       <TextField fx:id="tfLogin" layoutX="57.0" layoutY="190.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="190.0" />
       <Label layoutX="57.0" layoutY="169.0" text="Login" />
-      <Label layoutX="59.0" layoutY="292.0" text="Tipo de Usuário" />
-      <ComboBox fx:id="cbTipoUsuario" layoutX="59.0" layoutY="317.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="317.0" />
+      <Label layoutX="59.0" layoutY="292.0" text="Perfil" />
+      <ComboBox fx:id="cbPerfil" layoutX="59.0" layoutY="317.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="317.0" />
       <Label layoutX="57.0" layoutY="226.0" text="Senha" />
       <PasswordField fx:id="tfPassword" layoutX="57.0" layoutY="251.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="251.0" />
       <HBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="382.0" prefHeight="27.0" prefWidth="523.0" spacing="20.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="382.0">
