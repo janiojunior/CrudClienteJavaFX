@@ -41,46 +41,46 @@ public class Main extends Application {
 	}
 	
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		
-		root = FXMLLoader.load(getClass().getResource("/view/Template.fxml"));
-		
-		Parent clienteView = FXMLLoader.load(getClass().getResource("/view/CadastroCliente.fxml"));
-		
-		// adicionando a tela inicial no template (parte central)
-		ScrollPane scroll = (ScrollPane) root.getChildren().get(3);
-		scroll.setFitToHeight(true);
-		scroll.setFitToWidth(true);
-		VBox vbox = new VBox();
-		vbox.setAlignment(Pos.TOP_CENTER);
-		vbox.getChildren().add(clienteView);
-		scroll.setContent(vbox);
-		
-		
-		Scene scene = new Scene(root, 600, 600);
-		
-		primaryStage.setTitle("Cadastro de Cidade");
-		primaryStage.setScene(scene);
-		
-		//Full Screen
-//		primaryStage.setFullScreen(true);
-		primaryStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-		primaryStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
-		
-		primaryStage.show();
-	}
-
 //	@Override
 //	public void start(Stage primaryStage) throws Exception {
 //		
-//		AnchorPane root = FXMLLoader.load(getClass().getResource("/view/CadastroCliente.fxml"));
+//		root = FXMLLoader.load(getClass().getResource("/view/Template.fxml"));
+//		
+//		Parent clienteView = FXMLLoader.load(getClass().getResource("/view/CadastroCliente.fxml"));
+//		
+//		// adicionando a tela inicial no template (parte central)
+//		ScrollPane scroll = (ScrollPane) root.getChildren().get(3);
+//		scroll.setFitToHeight(true);
+//		scroll.setFitToWidth(true);
+//		VBox vbox = new VBox();
+//		vbox.setAlignment(Pos.TOP_CENTER);
+//		vbox.getChildren().add(clienteView);
+//		scroll.setContent(vbox);
+//		
 //		
 //		Scene scene = new Scene(root, 600, 600);
 //		
-//		primaryStage.setTitle("CRUD de Clientes");
+//		primaryStage.setTitle("Cadastro de Cidade");
 //		primaryStage.setScene(scene);
+//		
+//		//Full Screen
+////		primaryStage.setFullScreen(true);
+//		primaryStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
+//		primaryStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+//		
 //		primaryStage.show();
 //	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroUsuario.fxml"));
+		
+		Scene scene = new Scene(root, 600, 600);
+		
+		primaryStage.setTitle("CRUD de Usuarios");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 
 }
