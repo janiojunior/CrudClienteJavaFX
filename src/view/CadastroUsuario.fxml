@@ -10,20 +10,20 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" layoutX="126.0" layoutY="40.0" text="Cadastro de Usuário" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="tfLogin" layoutX="58.0" layoutY="122.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="122.0" />
-      <Label layoutX="58.0" layoutY="101.0" text="Login" />
-      <Label layoutX="60.0" layoutY="224.0" text="Tipo de Usuário" />
-      <ComboBox fx:id="cbTipoUsuario" layoutX="60.0" layoutY="249.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="249.0" />
-      <Label layoutX="58.0" layoutY="158.0" text="Senha" />
-      <PasswordField fx:id="tfPassword" layoutX="58.0" layoutY="183.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="183.0" />
-      <HBox alignment="TOP_RIGHT" layoutX="29.0" layoutY="314.0" prefHeight="27.0" prefWidth="523.0" spacing="20.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="314.0">
+      <TextField fx:id="tfLogin" layoutX="57.0" layoutY="190.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="190.0" />
+      <Label layoutX="57.0" layoutY="169.0" text="Login" />
+      <Label layoutX="59.0" layoutY="292.0" text="Tipo de Usuário" />
+      <ComboBox fx:id="cbTipoUsuario" layoutX="59.0" layoutY="317.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="317.0" />
+      <Label layoutX="57.0" layoutY="226.0" text="Senha" />
+      <PasswordField fx:id="tfPassword" layoutX="57.0" layoutY="251.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="251.0" />
+      <HBox alignment="TOP_RIGHT" layoutX="28.0" layoutY="382.0" prefHeight="27.0" prefWidth="523.0" spacing="20.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="382.0">
          <children>
             <Button fx:id="btIncluir" mnemonicParsing="false" prefWidth="100.0" text="Incluir" />
             <Button fx:id="btAlterar" mnemonicParsing="false" prefWidth="100.0" text="Alterar" />
@@ -31,5 +31,7 @@
             <Button fx:id="btLimpar" mnemonicParsing="false" prefWidth="100.0" text="Limpar" />
          </children>
       </HBox>
+      <Label layoutX="57.0" layoutY="118.0" text="Nome" />
+      <TextField fx:id="tfNome" layoutX="59.0" layoutY="138.0" prefHeight="27.0" prefWidth="492.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="138.0" />
    </children>
 </AnchorPane>
