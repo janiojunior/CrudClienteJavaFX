@@ -1,12 +1,14 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Usuario extends DefaultEntity<Usuario>{
 	
 	private static final long serialVersionUID = 2832889643952969394L;
 	private String nome;
+	@JoinColumn(unique=true)
 	private String login;
 	private String senha;
 	private Perfil perfil;

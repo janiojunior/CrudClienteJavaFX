@@ -35,19 +35,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="tfUsuario" layoutX="20.0" layoutY="217.0" prefHeight="27.0" prefWidth="265.0" />
       <Label layoutX="20.0" layoutY="193.0" text="Usuário" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <TextField fx:id="tfUsuario" layoutX="20.0" layoutY="217.0" prefHeight="27.0" prefWidth="265.0" />
       <Label layoutX="315.0" layoutY="193.0" text="Senha" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <PasswordField fx:id="tfSenha" layoutX="315.0" layoutY="217.0" prefHeight="27.0" prefWidth="265.0" />
       <Button layoutX="315.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleEntrar" prefWidth="120.0" style="-fx-background-color: #ffbf00#ffbf00 #ffbf00;" text="Entrar" />
       <Button layoutX="460.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleCancelar" prefWidth="120.0" style="-fx-background-color: #ffbf00#ffbf00 #ffbf00;" text="Cancelar" />
-      <PasswordField fx:id="tfSenha" layoutX="315.0" layoutY="217.0" prefHeight="27.0" prefWidth="265.0" />
    </children>
 </AnchorPane>

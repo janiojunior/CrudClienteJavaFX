@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Util;
 import factory.UsuarioListControllerFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -83,7 +84,7 @@ public class UsuarioController extends Controller<Usuario> implements Initializa
 	void handleIncluir(ActionEvent event) {
 		getUsuario().setNome(tfNome.getText());
 		getUsuario().setLogin(tfLogin.getText());
-		getUsuario().setSenha(tfSenha.getText());
+		getUsuario().setSenha(Util.encrypt(tfSenha.getText()));
 		getUsuario().setPerfil(cbPerfil.getValue());
 
 		super.save(getUsuario());
@@ -94,7 +95,7 @@ public class UsuarioController extends Controller<Usuario> implements Initializa
 	void handleAlterar(ActionEvent event) {
 		getUsuario().setNome(tfNome.getText());
 		getUsuario().setLogin(tfLogin.getText());
-		getUsuario().setSenha(tfSenha.getText());
+		getUsuario().setSenha(Util.encrypt(tfSenha.getText()));
 		getUsuario().setPerfil(cbPerfil.getValue());
 
 
@@ -145,7 +146,7 @@ public class UsuarioController extends Controller<Usuario> implements Initializa
 		// atualizando a interface
 		tfNome.setText(getUsuario().getNome());
 		tfLogin.setText(getUsuario().getLogin());
-		tfSenha.setText(getUsuario().getSenha());
+		tfSenha.setText("");
 		cbPerfil.setValue(getUsuario().getPerfil());
 
 		atualizarBotoes();
