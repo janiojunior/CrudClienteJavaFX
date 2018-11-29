@@ -5,11 +5,17 @@ import model.DefaultEntity;
 import model.Usuario;
 import repository.Repository;
 
-public class Controller<T extends DefaultEntity<? super T>> {
+public abstract class Controller<T extends DefaultEntity<? super T>> {
 	
 	private static Usuario usuario = null;
 	
+	public abstract boolean validate();
+	
 	public T save(T entity) {
+		
+		if (!validate())
+			return null;
+		
 		Repository<T> repository = 
 				new Repository<T>(JPAFactory.getEntityManager());
 		

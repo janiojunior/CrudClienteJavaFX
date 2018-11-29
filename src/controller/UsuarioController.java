@@ -152,4 +152,9 @@ public class UsuarioController extends Controller<Usuario> implements Initializa
 		atualizarBotoes();
 	}
 
+	@Override
+	public boolean validate() {
+		return true;
+	}
+
 }

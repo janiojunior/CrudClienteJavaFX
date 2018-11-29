@@ -4,6 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class Util {
 	
 	public static String encrypt(String value) {
@@ -27,10 +30,15 @@ public class Util {
 		return "Erro ao encriptar a senha";
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(Util.encrypt("123"));
-		System.out.println(Util.encrypt("123"));
-		System.out.println(Util.encrypt("123"));
+	public static Alert errorAlert(String mesage) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Aviso");
+		alert.setHeaderText(null);
+		alert.setContentText(mesage);
+		return alert;
+		
 	}
+	
+
 	
 }

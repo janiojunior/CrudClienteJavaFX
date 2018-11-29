@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Util;
 import factory.CidadeListControllerFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,8 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -55,9 +58,11 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
 		getCidade().setNome(tfNome.getText());
 		getCidade().setEstado(tfEstado.getText());
 		getCidade().setPais(tfPais.getText());
-
-		super.save(getCidade());
-		handleLimpar(event);    	
+		
+		if (super.save(getCidade()) != null) {
+			handleLimpar(event);	
+		}
+		    	
     }
     
     @FXML
@@ -66,8 +71,9 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
 		getCidade().setEstado(tfEstado.getText());
 		getCidade().setPais(tfPais.getText());
 
-		super.save(getCidade());
-		handleLimpar(event);    
+		if (super.save(getCidade()) != null) {
+			handleLimpar(event);	
+		}
     }
 
     @FXML
@@ -118,6 +124,27 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
 
 		atualizarBotoes();
     }
+
+
+	@Override
+	public boolean validate() {
+		
+		if (getCidade().getNome() == null || getCidade().getNome().trim().equals("")) {
+			Util.errorAlert("O nome da cidade deve ser informado.").show();
+    		tfNome.requestFocus();
+    		tfNome.selectAll();
+    		return false;
+		}
+		
+		if (getCidade().getEstado() == null || getCidade().getEstado().trim().equals("")) {
+			Util.errorAlert("O nome do estado deve ser informado.").show();
+    		tfEstado.requestFocus();
+    		tfEstado.selectAll();
+    		return false;
+		}
+		
+		return true;
+	}
 
 
 }

@@ -59,4 +59,9 @@ public class LoginController extends Controller<Usuario> implements Initializabl
     	}
     }
 
+	@Override
+	public boolean validate() {
+		return true;
+	}
+
 }

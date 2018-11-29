@@ -279,6 +279,12 @@ public class ClienteController extends Controller<Cliente> implements Initializa
 		this.cliente = cliente;
 	}
 
+	@Override
+	public boolean validate() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 	
 	
 }
