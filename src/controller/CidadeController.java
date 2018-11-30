@@ -21,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import listcontroller.CidadeListController;
 import model.Cidade;
+import model.Estado;
 
 public class CidadeController extends Controller<Cidade> implements Initializable{
 	
@@ -56,7 +57,7 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
     @FXML
     void handleIncluir(ActionEvent event) {
 		getCidade().setNome(tfNome.getText());
-		getCidade().setEstado(tfEstado.getText());
+		getCidade().getEstado().setNome(tfEstado.getText());
 		getCidade().setPais(tfPais.getText());
 		
 		if (super.save(getCidade()) != null) {
@@ -68,7 +69,7 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
     @FXML
     void handleAlterar(ActionEvent event) {
 		getCidade().setNome(tfNome.getText());
-		getCidade().setEstado(tfEstado.getText());
+		getCidade().getEstado().setNome(tfEstado.getText());
 		getCidade().setPais(tfPais.getText());
 
 		if (super.save(getCidade()) != null) {
@@ -99,8 +100,10 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
 	}
 
 	public Cidade getCidade() {
-		if (cidade == null)
+		if (cidade == null) {
 			cidade = new Cidade();
+			cidade.setEstado(new Estado());
+		}
 		return cidade;
 	}
 
@@ -119,7 +122,7 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
     	
 		// atualizando a interface
 		tfNome.setText(getCidade().getNome());
-		tfEstado.setText(getCidade().getEstado());
+		tfEstado.setText(getCidade().getEstado().getNome());
 		tfPais.setText(getCidade().getPais());
 
 		atualizarBotoes();
@@ -136,7 +139,7 @@ public class CidadeController extends Controller<Cidade> implements Initializabl
     		return false;
 		}
 		
-		if (getCidade().getEstado() == null || getCidade().getEstado().trim().equals("")) {
+		if (getCidade().getEstado() == null || getCidade().getEstado().getNome().trim().equals("")) {
 			Util.errorAlert("O nome do estado deve ser informado.").show();
     		tfEstado.requestFocus();
     		tfEstado.selectAll();

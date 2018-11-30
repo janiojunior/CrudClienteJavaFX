@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
 @Entity
@@ -8,7 +9,10 @@ public class Cidade extends DefaultEntity<Cidade> {
 	private static final long serialVersionUID = -477803445713636937L;
 	
 	private String nome;
-	private String estado;
+	
+	@Embedded
+	private Estado estado;
+	
 	private String pais;
 
 	public String getNome() {
@@ -19,11 +23,11 @@ public class Cidade extends DefaultEntity<Cidade> {
 		this.nome = nome;
 	}
 
-	public String getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
